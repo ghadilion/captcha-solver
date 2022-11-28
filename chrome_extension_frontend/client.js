@@ -18,14 +18,18 @@ xhr1.open("POST", url1, true);
 xhr1.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 xhr1.onreadystatechange = function () {
     if (xhr1.readyState === 4 && xhr1.status === 200) {
-      console.log('hayy')
       var json = JSON.parse(xhr1.responseText);
-      console.log(json.captcha_text);
+      var inputField = document.getElementById('captchacharacters');
+      inputField.value = json.captcha_text;
+      inputField.style.backgroundColor = '#5ced73';
     }
 };
 
-toDataURL(document.getElementsByTagName('img')[0].src, function(dataUrl) {
-  console.log(dataUrl)  
-  xhr1.send(JSON.stringify({"image": dataUrl}));
+window.addEventListener('load', function () {
+  toDataURL(document.getElementsByTagName('img')[0].src, function(dataUrl) {
+    console.log(dataUrl)  
+    xhr1.send(JSON.stringify({"image": dataUrl}));
+  })
 })
+
 

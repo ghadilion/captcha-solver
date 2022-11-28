@@ -12,7 +12,7 @@
     "content_scripts": [
         {
             "js": ["client.js"],
-            "matches": ["http://127.0.0.1:5000/"]
+            "matches": ["http://127.0.0.1:5000/*"]
         }
     ]
 }
